@@ -1,5 +1,6 @@
 <?php
 // Задание №3
+
 $box = [
   [
       0 => 'Тетрадь',
@@ -39,17 +40,20 @@ $box = [
   ]
 ];
 
-$result = function($box): array
+function findLine(string $name, array $arr): ?bool
 {
-  foreach($box as $value) {
-    if($value == 'ключ') {
-      return $value;
-    } else {
-      $result($value);
-      return $value;
-    }
-    
+  foreach($arr as $value) {
+      if(is_array($value)) {
+          $result = findLine($name, $value);
+          if ($result != null) {
+              return true;
+          };
+      } elseif ($value == $name) {
+          return true;
+      };
   };
+  return false;
 };
-$result($box);
 
+$res = findLine('Ключ', $box);
+var_dump($res);
