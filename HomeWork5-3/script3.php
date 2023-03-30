@@ -8,6 +8,6 @@ $ring = new Product('Ring', 500);
 $cross = new Product('Cross', 350);
 
 $component1 = new Product('Chain', 400, [$cross, $ring]);
-$user->getCart()->addProduct($component1, 1);
+$user->getCart()->addProduct($component1, 2);
 
-print_r($user->getCart()->getComponents());
+print_r($user->getCart()->getTotalPrice());

@@ -67,7 +67,7 @@ class Cart {
      */
     public function getTotalPrice(): float
     {
-        $productListSum = $this->totalPrice = array_sum($this->productList);
+        $productListSum = $this->totalPrice = array_sum($this->productList) * $this->count;
         if($this->totalPriceComponents) {
             $productListSum += $this->totalPriceComponents;
         }
