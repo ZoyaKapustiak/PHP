@@ -1,33 +1,34 @@
 <?php
-require_once 'User.php';
-class Task {
+class Task
+{
   private string $description;
   private DateTime $dateCreated;
   private DateTime $dateUpdated;
   private DateTime $dateDone;
   private int $priority;
   private bool $isDone = false;
-  private Users $user;
   private array $comment;
-  function __construct($user, $description, $priority)
+  public function __construct(string $description)
   {
     $this->description = $description;
-    $this->priority = $priority;
-    $this->user = $user;
-    $this->dateCreated = new DateTime();
-  }
-  public function getUser(): User
-  {
-    return $this->user;
-  }
-  public function setUser($user)
-  {
-      return $this->user = $user;
+//    $this->priority = $priority;
+//    $this->dateCreated = new DateTime();
   }
   public function getDescription(): string
   {
     return $this->description;
-  }  
+  }
+  public function getIsDone(): bool
+    {
+        return $this->isDone;
+    }
+    /**
+     * @param bool $isDone
+     */
+    public function setIsDone(): void
+    {
+        $this->isDone = true;
+    }
   public function setDescription(string $task, int $priority): void
   {
     $this->description = $task;
@@ -63,8 +64,7 @@ class Task {
   }
   public function markAsDone(): void
   {
-        $this->isDone = $this->setIsDone();
-        $this->dateUpdated;
+        $this->isDone = true;
         $this->dateDone = new DateTime();
   }
 
@@ -83,15 +83,5 @@ class Task {
     {
         $this->comment[] = $text;
     }
-    public function getIsDone(): bool
-    {
-        return $this->isDone;
-    }
-    /**
-     * @param bool $isDone
-     */
-     private function setIsDone(): void
-    {
-        $this->isDone = true;
-    }
+
 }
